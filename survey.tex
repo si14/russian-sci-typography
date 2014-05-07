@@ -1,0 +1,126 @@
+\documentclass[]{article}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=2cm}
+\usepackage{varioref}
+\usepackage{prettyref}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\usepackage{minted}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+\usepackage{polyglossia}
+\newfontfamily\cyrillicfont[Script=Cyrillic]{Brill}
+\setdefaultlanguage{russian}
+\usepackage{xunicode}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,shapes.geometric,chains,positioning,automata}
+\usepackage{tkz-berge}
+
+\usepackage{unicode-math}
+\setmathfont{XITS Math}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\def\Example{
+\subsection*{Великая теорема Ферма}
+Великая теорема Ферма утверждает следующее:
+
+\begin{figure}[H]
+  \centering
+  Для любого натурального числа $n > 2$ уравнение
+  \[a^n+b^n=c^n\]
+  не имеет решения в целых ненулевых числах $a$, $b$, $c$.
+\end{figure}
+
+Встречается более узкий вариант формулировки, утверждающий, что это уравнение не имеет \emph{натуральных} решений. Однако легко видеть, что если существует решение для целых чисел, то существует и решение в натуральных числах. В самом деле, пусть $a$, $b$, $c$ — целые числа, дающие решение уравнения Ферма. Если $n$ чётно, то $\left|a\right|$, $\left|b\right|$, $\left|c\right|$ тоже будут решением, а если нечётно, то перенесём все степени отрицательных значений в другую часть уравнения, изменив знак. Например, если бы существовало решение уравнения $a^3 + b^3 = c^3$ и при этом $a$ отрицательно, а прочие положительны, то $b^3 = c^3 + (-a)^3$, и получаем натуральные решения $c$, $\left|a\right|$, $b$. Поэтому обе формулировки логически эквивалентны.
+
+\subsection*{Adam Smith}
+No regulation of commerce can increase the quantity of industry in any society beyond what its capital can maintain. It can only divert a part of it into a direction into which it might not otherwise have gone; and it is by no means certain that this artificial direction is likely to be more advantageous to the society than that into which it would have gone of its own accord. Every individual is continually exerting himself to find out the most advantageous employment for whatever capital he can command. It is his own advantage, indeed, and not that of the society, which he has in his view. But the study of his own advantage naturally, or rather necessarily leads him to prefer that employment which is most advantageous to the society.
+
+\subsection*{Графика}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+    semithick]
+    \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+    \node[initial,state,initial text=старт] (A)    {$q_a$};
+    \node[state]            (B) [above right of=A] {$q_b$};
+    \node[state,accepting]  (C) [below right of=B] {$q_c$};
+
+    \path (A) edge              node {0,1,L} (B)
+              edge              node {1,1,R} (C)
+          (B) edge [loop above] node {1,1,L} (B)
+              edge              node {0,1,L} (C)
+          (C) edge              node {0,1,R} (A);
+  \end{tikzpicture}
+  \caption*{Какой-то FSM}
+\end{figure}
+}
+
+
+{
+\newfontfamily\cyrillicfont[Script=Cyrillic]{Brill}
+\setmainfont{Brill}
+\section*{Brill}
+\Example}
+
+\pagebreak{}
+
+{
+\newfontfamily\cyrillicfont[Script=Cyrillic]{DejaVu Serif}
+\setmainfont[Ligatures=TeX]{DejaVu Serif}
+\section*{DejaVu Serif}
+\Example}
+
+\pagebreak{}
+
+{
+\newfontfamily\cyrillicfont[Script=Cyrillic]{Droid Serif}
+\setmainfont[Ligatures=TeX]{Droid Serif}
+\section*{Droid Serif}
+\Example}
+
+\pagebreak{}
+
+{
+\newfontfamily\cyrillicfont[Script=Cyrillic]{Linux Libertine O}
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\section*{Linux Libertine O}
+\Example}
+
+\pagebreak{}
+
+{
+\newfontfamily\cyrillicfont[Script=Cyrillic]{PT Serif}
+\setmainfont[Ligatures=TeX]{PT Serif}
+\section*{PT Serif}
+\Example}
+
+\pagebreak{}
+
+{
+\newfontfamily\cyrillicfont{Gregor}
+\setmainfont[Ligatures=TeX]{Gregor}
+\section*{Gregor}
+\Example}
+
+
+
+\end{document}
